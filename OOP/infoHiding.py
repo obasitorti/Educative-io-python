@@ -52,32 +52,33 @@
 # obj1 = Car("Suzuki", "Grey", "2015", 4)
 # obj1.printCarDetails()
 
-class Account:
-    def __init__(self, title=None, balance=0):
-        self.title = title
-        self.balance = balance
+# class Account:
+#     def __init__(self, title=None, balance=0):
+#         self.title = title
+#         self.balance = balance
 
-    def withdrawal(self, amount):
-        self.amount = amount
-        self.balance = (self.balance - self.amount)
+#     def withdrawal(self, amount):
+#         self.amount = amount
+#         self.balance = (self.balance - self.amount)
 
-    def deposit(self, amount):
-        self.amount = amount
-        self.balance = (self.balance + self.amount)
+#     def deposit(self, amount):
+#         self.amount = amount
+#         self.balance = (self.balance + self.amount)
 
-    def getBalance(self):
-        return self.balance
-
-
-class SavingsAccount(Account):
-    def __init__(self, title=None, balance=0, interestRate=0):
-        super().__init__(title, balance)
-        self.interestRate = interestRate
-
-    def interestAmount(self):
-        return ((self.interestRate * self.balance)/100)
+#     def getBalance(self):
+#         return self.balance
 
 
-# code to test - do not edit this
-demo1 = SavingsAccount("Mark", 2000, 5)  # initializing a SavingsAccount object
-print (demo1.withdrawal)
+# class SavingsAccount(Account):
+#     def __init__(self, title=None, balance=0, interestRate=0):
+#         super().__init__(title, balance)
+#         self.interestRate = interestRate
+
+#     def interestAmount(self):
+#         return ((self.interestRate * self.balance)/100)
+
+
+# # code to test - do not edit this
+# demo1 = SavingsAccount("Mark", 2000, 5)  # initializing a SavingsAccount object
+# print (demo1.withdrawal)
+
