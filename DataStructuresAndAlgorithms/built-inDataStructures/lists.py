@@ -50,9 +50,3 @@ def count_low_high(num_list):
                 low+=1
     
     return([low, high])
-
-# high = 0
-# for n in number_list:
-#     if n % 3 == 0:
-#         high+=1
-# print(high)
