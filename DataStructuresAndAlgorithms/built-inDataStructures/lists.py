@@ -35,18 +35,20 @@
 # print(my_tuple)
 
 number_list = [21, 76, 31, 9, -1, 66]
-def count_low_high(num_list):
-    high = 0
-    low = 0
-    if len(num_list) == 0:
-        return None
-    if len(num_list) == 0:
-        return None
-    else:
-        for n in num_list:
-            if n % 3 == 0 or n > 50:
-                high+=1
-            else:
-                low+=1
+# def count_low_high(num_list):
+#     high = 0
+#     low = 0
+#     if len(num_list) == 0:
+#         return None
+#     if len(num_list) == 0:
+#         return None
+#     else:
+#         for n in num_list:
+#             if n % 3 == 0 or n > 50:
+#                 high+=1
+#             else:
+#                 low+=1
     
-    return([low, high])
+#     return([low, high])
+
+
