@@ -200,25 +200,93 @@ class LinkedList:
         if not p:
             s.next = q 
         if not q:
-            s.next = p
+            s.next = p 
+        return new_head
+
+    def remove_duplicates(self):
+        
+        cur = self.head
+        prev = None
+
+        dup_values = dict()
+
+        while cur:
+            if cur.data in dup_values:
+                # Remove node:
+                prev.next = cur.next
+                cur = None
+            else:
+                # Have not encountered element before.
+                dup_values[cur.data] = 1
+                prev = cur
+            cur = prev.next
+
+    def print_nth_from_last(self, n, method):
+        if method == 1:
+            #Method 1:
+            total_len = self.len_iterative()
+            cur = self.head 
+            while cur:
+                if total_len == n:
+                   #print(cur.data)
+                    return cur.data
+                total_len -= 1
+                cur = cur.next
+            if cur is None:
+                return
+
+        elif method == 2:
+            # Method 2:
+            p = self.head
+            q = self.head
+
+            count = 0
+            while q:
+                count += 1
+                if(count>=n):
+                    break
+                q = q.next
+                
+            if not q:
+                print(str(n) + " is greater than the number of nodes in list.")
+                return
+
+            while p and q.next:
+                p = p.next
+                q = q.next
+            return p.data
+
+    def rotate(self, k):
+        if self.head and self.head.next:
+            p = self.head 
+            q = self.head 
+            prev = None   
+            count = 0
             
-        self.head = new_head     
-        return self.head
+            while p and count < k:
+                prev = p
+                p = p.next 
+                q = q.next 
+                count += 1
+            p = prev
+            while q:
+                prev = q 
+                q = q.next 
+            q = prev 
 
-llist_1 = LinkedList()
-llist_2 = LinkedList()
+            q.next = self.head 
+            self.head = p.next 
+            p.next = None
 
-llist_1.append(1)
-llist_1.append(5)
-llist_1.append(7)
-llist_1.append(9)
-llist_1.append(10)
 
-llist_2.append(2)
-llist_2.append(3)
-llist_2.append(4)
-llist_2.append(6)
-llist_2.append(8)
 
-llist_1.merge_sorted(llist_2)
-llist_1.print_list()
+llist = LinkedList()
+llist.append(1)
+llist.append(2)
+llist.append(3)
+llist.append(4)
+llist.append(5)
+llist.append(6)
+
+llist.rotate(4)
+llist.print_list()
