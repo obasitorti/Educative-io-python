@@ -45,26 +45,61 @@ class CircularLinkedList:
             cur.next = new_node
         self.head = new_node
 
-    def remove(self, key):
-        if self.head:
-            if self.head.data == key:
-                cur = self.head
-                while cur.next != self.head:
-                    cur = cur.next
-                if self.head == self.head.next:
-                    self.head = None
-                else:
-                    cur.next = self.head.next
-                    self.head = self.head.next
+    # def remove(self, key):
+    #     if self.head:
+    #         if self.head.data == key:
+    #             cur = self.head
+    #             while cur.next != self.head:
+    #                 cur = cur.next
+    #             if self.head == self.head.next:
+    #                 self.head = None
+    #             else:
+    #                 cur.next = self.head.next
+    #                 self.head = self.head.next
+    #         else:
+    #             cur = self.head
+    #             prev = None
+    #             while cur.next != self.head:
+    #                 prev = cur
+    #                 cur = cur.next
+    #                 if cur.data == key:
+    #                     prev.next = cur.next
+    #                     cur = cur.next
+        
+    def remove_node(self, node):
+        if self.head == node:
+            cur = self.head
+            while cur.next != self.head:
+                cur = cur.next
+            if self.head == self.head.next:
+                self.head = None
             else:
-                cur = self.head
-                prev = None
-                while cur.next != self.head:
-                    prev = cur
+                cur.next = self.head.next
+                self.head = self.head.next
+        else:
+            cur = self.head
+            prev = None
+            while cur.next != self.head:
+                prev = cur
+                cur = cur.next
+                if cur == node:
+                    prev.next = cur.next
                     cur = cur.next
-                    if cur.data == key:
-                        prev.next = cur.next
-                        cur = cur.next
+
+    def josephus_circle(self, step):
+        cur = self.head
+
+        length = len(self)
+        while length > 1:
+            count = 1
+            while count != step:
+                cur = cur.next
+                count += 1
+            print("KILL:" + str(cur.data))
+            self.remove_node(cur)
+            cur = cur.next
+            length -= 1
+
 
     def __len__(self):
         cur = self.head
@@ -107,22 +142,32 @@ class CircularLinkedList:
         print("\n")
         split_cclist.print_list()
 
-circularlink = CircularLinkedList()
-circularlink.append("C")
-circularlink.append("E")
-circularlink.prepend("2")
-circularlink.prepend("1")
-circularlink.print_list()
-circularlink.__len__()
-print()
-circularlink.remove("C")
-circularlink.remove("1")
-circularlink.append("G")
-circularlink.append("J")
-circularlink.append("L")
-circularlink.prepend("1")
-circularlink.print_list()
-print()
-circularlink.split_list()
+# circularlink = CircularLinkedList()
+# circularlink.append("C")
+# circularlink.append("E")
+# circularlink.prepend("2")
+# circularlink.prepend("1")
+# circularlink.print_list()
+# circularlink.__len__()
+# print()
+# circularlink.remove("C")
+# circularlink.remove("1")
+# circularlink.append("G")
+# circularlink.append("J")
+# circularlink.append("L")
+# circularlink.prepend("1")
+# circularlink.print_list()
+# print()
+# circularlink.split_list()
+
+cllist = CircularLinkedList()
+cllist.append(1)
+cllist.append(2)
+cllist.append(3)
+cllist.append(4)
+
+
+cllist.josephus_circle(3)
+cllist.print_list()
 
 
